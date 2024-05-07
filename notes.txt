@@ -1,0 +1,36 @@
+--Creates a new Django project
+django-admin startproject mysite
+--Creates an Django app from the project
+python manage.py startapp challenges
+
+Do not delete any of the files for the Django project
+
+related to local development server
+    asgi.py
+    wsgi.py
+
+
+python manage.py runserver
+
+db.sqlite3 is a dummy database
+
+Django is a modular structures
+Add multiple apps
+we can create as many apps
+
+"App" ~= "Module"
+
+python manage.py startapp challenges
+
+
+URL Config/Routes: URL-action mappings which ensure that certain results are 'achieved' when certain URLs are entered by the user
+URLS are responsible for defining the URLs we wanna support and the actions that should be triggered
+Views are basically those actions
+Views are all about holding the concrete logic
+Views is just a function or Class
+
+URLS files is defaultly created when creating a new project
+(can add url file to it's application folder)
+
+steps on creating urls and Views go to urls.py of application or main application
+django.urls import path, include -> path is for the relative path -> include adds a new path and where it is located
