@@ -34,3 +34,9 @@ URLS files is defaultly created when creating a new project
 
 steps on creating urls and Views go to urls.py of application or main application
 django.urls import path, include -> path is for the relative path -> include adds a new path and where it is located
+
+from views.py
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.urls import reverse
+
+reverse() -> allows us to build urls dynamically -> identify them by (name)
