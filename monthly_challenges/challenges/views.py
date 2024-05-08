@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.urls import reverse
 
 # Create your views here.
 
@@ -53,14 +54,16 @@ monthly_challenges = {
     "july": "Walk for at least 20 minutes everyday!",
     "august": "Fuck 2 times per day for 20 days",
     "september": "Sleep 8 hours per day",
-    "october": "I dont know"
+    "october": "I dont know",
+    "november": "I dont know november",
+    "december": "I dont know december",
 }
 
 # DYNAMIC VIEWS
 
 # def monthly_challenges(request, month):
 #     challenge_text = None
-#     if month == "january": 
+#     if month == "january":
 #         challenge_text = "Eat no meat for 20 days"
 #     elif month == "february":
 #         challenge_text = "Walk for at least 20 minutes everyday!"
@@ -71,9 +74,21 @@ monthly_challenges = {
 #     return HttpResponse(challenge_text)
 
 
+def monthly_challenge_by_number(request, month):
+    months = list(monthly_challenges.keys())
+    if month < 1 or month > len(months):
+        return HttpResponseNotFound("Invalid Month")
+
+    redirect_month = months[month - 1]
+    
+    redirect_path = reverse("month-challenge", args=[redirect_month]) #/challenge/january -> check the name argument of the function
+    return HttpResponseRedirect(redirect_path)
+    # return HttpResponse(month)
+
+
 def monthly_challenge(request, month):
     try:
-        # challenge_text = monthly_challenges[month]
-        return HttpResponse(monthly_challenges[month])
+        challenge_text = monthly_challenges[month]
+        return HttpResponse(challenge_text)
     except:
         return HttpResponseNotFound("This month is not supported")

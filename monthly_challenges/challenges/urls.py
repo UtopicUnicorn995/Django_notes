@@ -16,7 +16,8 @@ urlpatterns = [
     # path("november", views.november),
     # path("december", views.december),
 # DYNAMIC URL
-    path("<month>", views.monthly_challenge)
+    path("<int:month>", views.monthly_challenge_by_number),
+    path("<str:month>", views.monthly_challenge, name="month-challenge"),
     # path("<str:month>", views.monthly_challenges) this means you have a strictly string argument -> int: number
     # "<month>" placeholder which can be used as the identifier/argument of a views.monthly_challenges function
 ]
