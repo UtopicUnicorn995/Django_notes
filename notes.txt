@@ -1,7 +1,15 @@
 --Creates a new Django project
 django-admin startproject mysite
+
 --Creates an Django app from the project
 python manage.py startapp challenges
+
+--starts the django server
+python manage.py runserver
+
+
+^^ extension
+    can help with the templates
 
 Do not delete any of the files for the Django project
 
@@ -9,8 +17,6 @@ related to local development server
     asgi.py
     wsgi.py
 
-
-python manage.py runserver
 
 db.sqlite3 is a dummy database
 
@@ -40,3 +46,25 @@ from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
 
 reverse() -> allows us to build urls dynamically -> identify them by (name)
+
+django templates
+    --Are html files 
+    --Convension in adding html file -> app folder 
+        --template\appName\appName.html
+    --Read file, extract the html content and store that in a string -> send back as response
+        <--from django.template.loader import render_to_string-->
+        --To setup base directory -> goto the main folder and to settings.py
+                X--'DIRS': [BASE_DIR / "challenges" / "templates"],
+                /--Add app name to the Installed_apps in settings.py
+        if you have a template folder outside the app, being used by multiple app -> you could add folder to dirs
+
+
+DTL -> Django template language
+Enhanced HTML files to create dynamic pages
+inside the html file:
+    -- {{}} is used when injecting a dynamic file -> Add the key text
+        -- Also called as interpolation
+    -- You cannot use a python function inside an html file
+        --django has a built in tags and filters
+        --filters are adjustments you can apply to the interpolated value -> filters can be applied as functions in the HTML file
+        
