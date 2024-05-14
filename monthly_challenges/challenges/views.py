@@ -57,7 +57,7 @@ monthly_challenges = {
     "september": "Sleep 8 hours per day",
     "october": "I dont know",
     "november": "No nut november",
-    "december": "I dont know december",
+    "december": None, #"I dont know december",
 }
 
 # DYNAMIC VIEWS
@@ -76,22 +76,23 @@ monthly_challenges = {
 
 
 def index(request):
-    list_items = ""
-    for month in list(monthly_challenges.keys()):
-        index_path = reverse("month-challenge")
-        list_items += f"<li><a href='{index_path}{month}'>{month.capitalize()}</a></li>"
+    months = list(monthly_challenges.keys())
+    # list_items = ""
+    # for month in list(monthly_challenges.keys()):
+    #     index_path = reverse("month-challenge")
+    #     list_items += f"<li><a href='{index_path}{month}'>{month.capitalize()}</a></li>"
         
         
     # response_data = f"<ul>{list_items}</ul>"
     
-    response_data = f"""
-    <ul>{list_items}</ul>
-    """
+    # response_data = f"""
+    # <ul>{list_items}</ul>
+    # """
     
     # return HttpResponse(response_data)
 
     return render(request, "challenges/index.html", {
-        monthly_challenge: monthly_challenge
+        "months": months
     })
 
 
@@ -120,7 +121,7 @@ def monthly_challenge(request, month):
         print(request)
         print('fucker')
         return render( request ,"challenges/challenge.html", {
-            "keyname": challenge_text,
+            "text": challenge_text,
             "month": month
         })
     except:

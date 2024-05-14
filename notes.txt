@@ -68,3 +68,8 @@ inside the html file:
         --django has a built in tags and filters
         --filters are adjustments you can apply to the interpolated value -> filters can be applied as functions in the HTML file
         
+Template inheritance
+    If you want to have a same HTML file but with a different dynamic value
+    If it's a template that you want to share across all apps
+        -- Create a templates folder outside the individial app
+        
