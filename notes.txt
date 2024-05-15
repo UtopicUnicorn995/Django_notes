@@ -73,3 +73,33 @@ Template inheritance
     If it's a template that you want to share across all apps
         -- Create a templates folder outside the individial app
         
+Includes
+    HTML template snippets that you want to add somewhere in your code
+        --Why? Sometimes you want to have a component somewhere else but not in all pages
+        include folder inside the app folder
+        variable from the included parent can also be used by the include snippet
+
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect, Http404
+    Http404 is a shortcut -> check views.py for reference
+
+
+For styling
+    typically add CSS but not by adding css tags -> add css files that holds our css codes
+    add static folder at the root
+        static/challenges/challenges.css
+    for this to apply
+        go to installed_apps in settings.py
+            make sure that django.contrib.staticfiles is there
+            make sure that STATIC_URL is there
+
+        in the page that you want to plug in an extra functionality add {% load static %}
+            for css files add a link element
+    
+    to add a global static file
+        create a static folder at the root of main app
+        problem: The STATIC_URL settings does not look for a global folder
+        to make django aware of this folder
+            add a setting:
+                STATICFILES_DIRS = [
+                    BASE_DIR / "static"
+                ]
