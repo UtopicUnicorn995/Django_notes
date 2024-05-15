@@ -120,6 +120,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+#tells django under which url it should serve those static assets
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static"
+]
+#tells django to automatically look for a static base folder 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

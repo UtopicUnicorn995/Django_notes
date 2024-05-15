@@ -1,10 +1,20 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "challenges/challenges.css" %}">
+    {% comment %} 
+        {% statc %} tag is only available if you have already loaded static
+    {% endcomment %}
+{% endblock css_files %}
+
 
     {% block page_title %}
         All challenges
     {% endblock page_title %}
 
     {% block content %}
+    {%include "challenges/includes/header.html"%}
     <ul>
         {% for month in months%}
         <li>

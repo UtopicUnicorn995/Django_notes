@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect, Http404
 from django.urls import reverse
-# from django.template.loader import render_to_string
+from django.template.loader import render_to_string
 
 # Create your views here.
 
@@ -125,4 +125,12 @@ def monthly_challenge(request, month):
             "month": month
         })
     except:
-        return HttpResponseNotFound("<h1>This is not a valid Date</h1>")
+        # response_data = render_to_string("404.html") 
+        # # We dont have to specify the location unlike the challenges, because it is already in the root folder
+        # We could not use the render shortcut because it always renders a success response
+        # HttpResponseNotFound gives an 404 response which render shortcut could not use
+        # return HttpResponseNotFound(response_data)
+         raise Http404()
+        # Http404 will look for a 404.html folder in the root directory -> should be named 404.html
+        # Would not show 404 page in the development setup
+        # Once in the production, in settings.py change DEBUG = False to see this work
