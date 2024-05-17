@@ -1,3 +1,37 @@
-{% extends "base.html" %}
+{% extends "base.html" %} 
+{% load static %}
 
-{% block site_title %}This shit is real{% endblock site_title %}
+{% block site_title %}This shit is real{% endblock site_title %} 
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "blog/index.css" %}"/>
+<link rel="stylesheet" href="{% static "blog/all-posts.css" %}"/>
+<link rel="stylesheet" href="{% static "blog/post.css" %}"/>
+{% endblock css_files %}
+
+{% block content %}
+<section id="welcome">
+  <header>
+    <img src="{% static "blog/images/me.jpg" %}" alt="Ian - The Author of this Blog" />
+    <h2>IAN's Blog</h2>
+  </header>
+  <p>Hi, I am Ian and I love to blog about tech and the world!</p>
+</section>
+
+<section id="latest-posts">
+  <h2>My latest thoughts</h2>
+  <ul>
+    {% include "blog/includes/post.html" %}
+  </ul>
+</section>
+
+<section id="about">
+    <h2>What I do</h2>
+    <p>I love programming, I love to help others and I enjoy exploring new technologies in general</p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti animi quos maxime architecto deserunt aspernatur nihil ipsam laborum sint, itaque fuga, odio ducimus repudiandae tempora sit quod. Dignissimos, aut delectus?
+        Harum provident, voluptate placeat, porro eum adipisci natus cupiditate delectus soluta fuga pariatur ipsa temporibus quod alias sapiente nesciunt. Quas, rerum ipsa aliquam dolores hic non voluptas debitis officiis nam!
+        Iste, eius quae? Reprehenderit quidem beatae officiis, veritatis explicabo inventore nostrum doloribus laboriosam. Esse quas perspiciatis dolor voluptatibus, incidunt sapiente labore. Ducimus eveniet odit, rerum nostrum minus necessitatibus libero voluptatum!
+    </p>
+</section>
+{% endblock content %}
