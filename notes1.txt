@@ -1,0 +1,7 @@
+PLAN
+create project
+create new app
+url/views
+    create a urls.py in the app
+    add urlspattern
+        so that django will find the path

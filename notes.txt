@@ -103,3 +103,7 @@ For styling
                 STATICFILES_DIRS = [
                     BASE_DIR / "static"
                 ]
+
+
+"SLUGS" always look something like this:
+my-post-is-here => SEO-friendly unique identifiers
